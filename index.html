@@ -182,7 +182,6 @@
 
     } catch (err) {
       alert(err);
-      TrackJS.track("#3 kitty error");
     }
 
     //4 | custom errors
@@ -200,7 +199,10 @@
     } catch(err) {
       alert(err.message);
       alert(err.name);
-      TrackJS.track("#4 custom error");
+    }
+    window.onerror = function(message, url, linenumber) {
+	    console.log(linenumber);
+      TrackJS.track(linenumber);
     }
 
   </script>
